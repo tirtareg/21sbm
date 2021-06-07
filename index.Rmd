@@ -1,5 +1,5 @@
 ---
-title: "SNMPTN 2021"
+title: "SBMPTN 2021"
 author: "Subbagian Registrasi"
 output: 
   flexdashboard::flex_dashboard:
@@ -20,7 +20,7 @@ Sys.setlocale("LC_TIME", "IND")
 
 library(readxl)
 
-db <- read_excel("snmptn.xlsx")
+db <- read_excel("data.xlsx")
 
 library(tidyverse)
 
@@ -53,7 +53,7 @@ valueBox(
 
 valueBox(
   value = paste(format(nrow(db), big.mark = " "), "", sep = " "),
-  caption = "Lulus SNMPTN",
+  caption = "Lulus SBMPTN",
   icon = "fas fa-clipboard-check",
   color = "purple"
 )
@@ -348,7 +348,7 @@ Camaba Registrasi
 row
 ---
 
-### Berikut adalah daftar nama calon mahasiswa baru Universitas Sultan Ageng Tirtayasa yang melakukan registrasi ulang di admisi.untirta.ac.id. (**gunakan Search untuk pencarian cepat**)
+### Berikut adalah daftar nama calon mahasiswa baru Universitas Sultan Ageng Tirtayasa yang melakukan registrasi ulang di admisi.untirta.ac.id sampai dengan `r format(Sys.time(), "%d %B %Y")` pukul `r format(Sys.time(), "%X")` (**gunakan Search untuk pencarian cepat**).
 
 ```{r}
 # `r format(Sys.time(), "%d %B %Y")` pukul `r format(Sys.time(), "%X")`
@@ -414,7 +414,7 @@ Mahasiswa Baru
 row
 ---
 
-### Berikut adalah daftar nama mahasiswa baru Universitas Sultan Ageng Tirtayasa jalur SNMPTN. (**gunakan Search untuk pencarian cepat**)
+### Berikut adalah daftar nama mahasiswa baru Universitas Sultan Ageng Tirtayasa jalur SBMPTN sampai dengan `r format(Sys.time(), "%d %B %Y")` pukul `r format(Sys.time(), "%X")` (**gunakan Search untuk pencarian cepat**).
 
 ```{r}
 # `r format(Sys.time(), "%d %B %Y")` pukul `r format(Sys.time(), "%X")`
