@@ -127,7 +127,7 @@ valueBox(
   value = paste(format(belum, big.mark = " "), " (", 
                 round(belum/nrow(db) * 100, 0), "% )",
                 sep = " "),
-  caption = "Tidak Registrasi",
+  caption = "Belum Registrasi",
   icon = "fas fa-file-upload",
   color = "brown"
 )
@@ -229,24 +229,43 @@ div(plot_ly(type = "pie", labels = data$jns_sklh, values = data$banyak,
         insidetextorientation = "radial"), align = "center")
 ```
 
-### **Camaba berdasarkan penghasilan orang tua**
+<!-- ### **Camaba berdasarkan penghasilan orang tua** -->
+
+<!-- ```{r} -->
+<!-- data <- db %>% -->
+<!--   group_by(penghasilan, jk) %>% -->
+<!--   summarize(tot = n()) -->
+<!-- data <- data %>% -->
+<!--   pivot_wider(names_from = jk, values_from = tot) -->
+<!-- data[is.na(data)] <- 0 -->
+<!-- names(data) <- c("Penghasilan", "Laki-Laki", "Perempuan") -->
+<!-- #data$Pendidikan <- c("SD", "SLTP", "SLTA", "D3", "S1", "S2", "S3", "Tidak ada") -->
+<!-- data <- adorn_totals(data, where = c("col", "row"), name = "JML") -->
+
+<!-- kable(data) %>% -->
+<!--   kable_styling(bootstrap_options = "striped", full_width = F, -->
+<!--                 latex_options = "scale_down") %>% -->
+<!--   add_header_above(c(" " = 1, "Jenis Kelamin" = 2, " " = 1)) -->
+<!-- ``` -->
+
+Row
+---
+
+### **Statistik Keketatan Program Studi**
 
 ```{r}
-data <- db %>%
-  group_by(penghasilan, jk) %>%
-  summarize(tot = n())
-data <- data %>%
-  pivot_wider(names_from = jk, values_from = tot)
-data[is.na(data)] <- 0
-names(data) <- c("Penghasilan", "Laki-Laki", "Perempuan")
-#data$Pendidikan <- c("SD", "SLTP", "SLTA", "D3", "S1", "S2", "S3", "Tidak ada")
-data <- adorn_totals(data, where = c("col", "row"), name = "JML")
+data <- read_excel("G:/My Drive/#PMB/2021/02_SBMPTN/registrasi/Statistik_Keketatan_Prodi.xlsx")
 
-kable(data) %>%
+names(data) <- c("No", "Program Studi", "Peminat", "Diterima", "Keketatan (%)",
+                 "Peminat", "% Peminat", "Diterima", "% Diterima", "Peminat", "% Peminat",
+                 "Diterima", "% Diterima")
+kable(data, row.names = F) %>%
   kable_styling(bootstrap_options = "striped", full_width = F,
                 latex_options = "scale_down") %>%
-  add_header_above(c(" " = 1, "Jenis Kelamin" = 2, " " = 1))
+  add_header_above(c(" " = 5, "Pilihan 1" = 4, "Pilihan 2" = 4))
+
 ```
+
 
 Progres Registrasi
 ===
@@ -362,50 +381,6 @@ DT::datatable(data,
               #filter = "top")
 ```
 
-row 
------------------------------------------------------
-
-### **Berikut adalah daftar sekolah asal dengan camaba BELUM selesai registrasi dimulai dari yang terbesar**
-
-```{r} 
-data <- db %>%
-  group_by(nama_sklh, kota_sklh, provinsi) %>%
-  mutate(registrasi = replace_na(registrasi, "blm"),
-         registrasi = ifelse(registrasi == "blm", 0, 1)) %>%
-  summarise(lulus = n(),
-            registrasi = sum(registrasi),
-            belum = lulus - registrasi) %>%
-  filter(belum > 0) %>%
-  arrange(-belum)
-  
-
-names(data) <- c("Nama Sekolah", "Alamat Kota/Kab", "Alamat Provinsi", "Lulus SNMPTN", "Sudah Registrasi", "Belum Registrasi")
-
-DT::datatable(data,
-              rownames = F)#,
-              #filter = "top")
-```
-
-### **Berikut adalah daftar sekolah asal dengan semua camaba SUDAH selesai registrasi**
-
-```{r}
-data <- db %>%
-  group_by(nama_sklh, kota_sklh, provinsi) %>%
-  mutate(registrasi = replace_na(registrasi, "blm"),
-         registrasi = ifelse(registrasi == "blm", 0, 1)) %>%
-  summarise(lulus = n(),
-            registrasi = sum(registrasi),
-            belum = lulus - registrasi) %>%
-  filter(belum == 0) %>%
-  arrange(-registrasi)
-  
-
-names(data) <- c("Nama Sekolah", "Alamat Kota/Kab", "Alamat Provinsi", "Lulus SNMPTN", "Sudah Registrasi", "Belum Registrasi")
-
-DT::datatable(data,
-              rownames = F)#,
-              #filter = "top")
-```
 
 
 Mahasiswa Baru
@@ -428,28 +403,3 @@ DT::datatable(data,
               #filter = "top")
 ```
 
-row
----
-
-### **Berikut adalah daftar sekolah asal mahasiswa baru Untirta**
-
-```{r}
-data <- db %>%
-  group_by(nama_sklh, kota_sklh, provinsi) %>%
-  mutate(registrasi = replace_na(registrasi, "blm"),
-         registrasi = ifelse(registrasi == "blm", 0, 1),
-         nim = replace_na(nim, "blm"),
-         nim = ifelse(nim == "blm", 0, 1)) %>%
-  summarise(lulus = n(),
-            registrasi = sum(registrasi),
-            belum = lulus - registrasi,
-            mhs = sum(nim)) %>%
-  arrange(-mhs)
-  
-
-names(data) <- c("Nama Sekolah", "Alamat Kota/Kab", "Alamat Provinsi", "Lulus SNMPTN", "Registrasi", "Tidak Registrasi", "Banyaknya Maba")
-
-DT::datatable(data,
-              rownames = F)#,
-              #filter = "top")
-```
