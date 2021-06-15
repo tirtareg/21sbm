@@ -229,6 +229,21 @@ div(plot_ly(type = "pie", labels = data$jns_sklh, values = data$banyak,
         insidetextorientation = "radial"), align = "center")
 ```
 
+### **Camaba berdasarkan tahun lulus dan pilihan program studi**
+
+```{r}
+data <- db %>% 
+  group_by(tahun_lulus, pilihan_prodi) %>% 
+  summarise(n = n() ) %>% 
+  pivot_wider(names_from = pilihan_prodi, values_from = n)
+names(data) <- c("Tahun Lulus", "Pilihan 1", "Pilihan 2")
+
+div(plot_ly(data, x = ~`Tahun Lulus`, y = ~`Pilihan 1`, type = 'bar', name = "Pilihan 1") %>% 
+  add_trace(y = ~`Pilihan 2`, name = "Pilihan 2") %>%
+  layout(yaxis = list(title = ' '), barmode = 'group'), align = "center")
+```
+
+
 <!-- ### **Camaba berdasarkan penghasilan orang tua** -->
 
 <!-- ```{r} -->
