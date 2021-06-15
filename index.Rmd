@@ -270,6 +270,7 @@ Row
 
 ```{r}
 data <- read_excel("G:/My Drive/#PMB/2021/02_SBMPTN/registrasi/Statistik_Keketatan_Prodi.xlsx")
+data <- data[,-2]
 
 names(data) <- c("No", "Program Studi", "Peminat", "Diterima", "Keketatan (%)",
                  "Peminat", "% Peminat", "Diterima", "% Diterima", "Peminat", "% Peminat",
