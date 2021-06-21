@@ -328,7 +328,6 @@ points(300, 70, pch = 20)
 text(305,70, "Rataan", cex = 0.8, pos = 4, offset = 0.1)
 text(305,65, "Min", cex = 0.8, pos = 4, offset = 0.1)
 text(305,75, "Max", cex = 0.8, pos = 4, offset = 0.1)
-
 text(300,77, "Ket:", cex = 0.8, pos = 3, offset = 0.1)
 
 ```
