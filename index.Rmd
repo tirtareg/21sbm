@@ -282,6 +282,57 @@ kable(data, row.names = F) %>%
 
 ```
 
+Row
+---
+
+### **Sebaran Nilai UTBK calon mahasiswa Untirta**
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=10, fig.width=8}
+raw <- read_excel("G:/My Drive/Dian/R/Siti Arita Novia/sbmptn.xlsx")
+n = nrow(raw)
+
+par(mar=c(5,15,4,2))
+
+plot(raw$RATAAN, raw$NO, ylim = c(0.5, max(raw$NO)+2), 
+     xlim = c(min(raw$MIN-5), max(raw$MAX)+5), 
+     type = "p", pch = 20,
+     yaxt="n", ylab = "",
+     xlab = "Sebaran Nilai UTBK 2021")
+
+
+axis(2, at = raw$NO + 0.8, labels = raw$`NAMA PRODI`, tick = FALSE, outer = F,
+     las = 2, hadj = 1, padj = 1, cex.axis = 0.7)
+
+for (i in 1:n) {
+  segments(raw$q1[i], raw$NO[i] - 0.5, raw$q3[i], raw$NO[i] - 0.5)
+  segments(raw$q1[i], raw$NO[i] + 0.5, raw$q3[i], raw$NO[i] + 0.5)
+  segments(raw$q1[i], raw$NO[i] - 0.5, raw$q1[i], raw$NO[i] + 0.5)
+  segments(raw$q3[i], raw$NO[i] - 0.5, raw$q3[i], raw$NO[i] + 0.5)
+  segments(raw$MIN[i], raw$NO[i] - 0.5, raw$MIN[i], raw$NO[i] + 0.5)
+  segments(raw$MAX[i], raw$NO[i] - 0.5, raw$MAX[i], raw$NO[i] + 0.5)
+  segments(raw$MIN[i], raw$NO[i], raw$q1[i], raw$NO[i])
+  segments(raw$q3[i], raw$NO[i], raw$MAX[i], raw$NO[i])
+}
+
+segments(298, 40, 302, 40)
+segments(298, 80, 302, 80)
+segments(300, 40, 300, 50)
+segments(300, 70, 300, 80)
+
+segments(298, 50, 302, 50)
+segments(298, 70, 302, 70)
+segments(298, 50, 298, 70)
+segments(302, 50, 302, 70)
+
+points(300, 60, pch = 20)
+
+text(305,60, "Rataan", cex = 0.8, pos = 4, offset = 0.1)
+text(305,40, "Min", cex = 0.8, pos = 4, offset = 0.1)
+text(305,80, "Max", cex = 0.8, pos = 4, offset = 0.1)
+
+text(300,82, "Ket:", cex = 0.8, pos = 3, offset = 0.1)
+
+```
+
 
 Progres Registrasi
 ===
