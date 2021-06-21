@@ -313,23 +313,23 @@ for (i in 1:n) {
   segments(raw$q3[i], raw$NO[i], raw$MAX[i], raw$NO[i])
 }
 
-segments(298, 40, 302, 40)
-segments(298, 80, 302, 80)
-segments(300, 40, 300, 50)
-segments(300, 70, 300, 80)
+segments(298, 65, 302, 65)
+segments(298, 75, 302, 75)
+segments(300, 65, 300, 67)
+segments(300, 73, 300, 75)
 
-segments(298, 50, 302, 50)
-segments(298, 70, 302, 70)
-segments(298, 50, 298, 70)
-segments(302, 50, 302, 70)
+segments(298, 65, 302, 65)
+segments(298, 73, 302, 73)
+segments(298, 67, 298, 73)
+segments(302, 67, 302, 73)
 
-points(300, 60, pch = 20)
+points(300, 70, pch = 20)
 
-text(305,60, "Rataan", cex = 0.8, pos = 4, offset = 0.1)
-text(305,40, "Min", cex = 0.8, pos = 4, offset = 0.1)
-text(305,80, "Max", cex = 0.8, pos = 4, offset = 0.1)
+text(305,70, "Rataan", cex = 0.8, pos = 4, offset = 0.1)
+text(305,65, "Min", cex = 0.8, pos = 4, offset = 0.1)
+text(305,75, "Max", cex = 0.8, pos = 4, offset = 0.1)
 
-text(300,82, "Ket:", cex = 0.8, pos = 3, offset = 0.1)
+text(300,77, "Ket:", cex = 0.8, pos = 3, offset = 0.1)
 
 ```
 
