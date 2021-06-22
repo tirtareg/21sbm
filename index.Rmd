@@ -182,24 +182,6 @@ kable(data) %>%
 
 ```
 
-### **Camaba berdasarkan Provinsi asal**
-
-```{r}
-data <- db %>%
-  group_by(provinsi, jk) %>%
-  summarize(tot = n())
-data <- data %>%
-  pivot_wider(names_from = jk, values_from = tot)
-data[is.na(data)] <- 0
-data <- adorn_totals(data, where = "col", name = "JML")
-data <- arrange(data, desc(JML))
-data <- adorn_totals(data, where = "row", name = "JML")
-names(data) <- c("Provinsi", "Laki-Laki", "Perempuan", "JML")
-kable(data) %>%
-  kable_styling(bootstrap_options = "striped", full_width = F,
-                latex_options = "scale_down") %>%
-  add_header_above(c(" " = 1, "Jenis Kelamin" = 2, " " = 1))
-```
 
 
 Row
@@ -330,6 +312,25 @@ text(305,65, "Min", cex = 0.8, pos = 4, offset = 0.1)
 text(305,75, "Max", cex = 0.8, pos = 4, offset = 0.1)
 text(300,77, "Ket:", cex = 0.8, pos = 3, offset = 0.1)
 
+```
+
+### **Camaba berdasarkan Provinsi asal**
+
+```{r}
+data <- db %>%
+  group_by(provinsi, jk) %>%
+  summarize(tot = n())
+data <- data %>%
+  pivot_wider(names_from = jk, values_from = tot)
+data[is.na(data)] <- 0
+data <- adorn_totals(data, where = "col", name = "JML")
+data <- arrange(data, desc(JML))
+data <- adorn_totals(data, where = "row", name = "JML")
+names(data) <- c("Provinsi", "Laki-Laki", "Perempuan", "JML")
+kable(data) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F,
+                latex_options = "scale_down") %>%
+  add_header_above(c(" " = 1, "Jenis Kelamin" = 2, " " = 1))
 ```
 
 
