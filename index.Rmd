@@ -127,7 +127,7 @@ valueBox(
   value = paste(format(belum, big.mark = " "), " (", 
                 round(belum/nrow(db) * 100, 0), "% )",
                 sep = " "),
-  caption = "Belum Registrasi",
+  caption = "Tidak Registrasi",
   icon = "fas fa-file-upload",
   color = "brown"
 )
@@ -434,11 +434,12 @@ Camaba Registrasi
 row
 ---
 
-### Berikut adalah daftar nama calon mahasiswa baru Universitas Sultan Ageng Tirtayasa yang melakukan registrasi ulang di admisi.untirta.ac.id sampai dengan `r format(Sys.time(), "%d %B %Y")` pukul `r format(Sys.time(), "%X")` (**gunakan Search untuk pencarian cepat**).
+### Berikut adalah daftar nama calon mahasiswa baru Universitas Sultan Ageng Tirtayasa yang melakukan registrasi ulang di admisi.untirta.ac.id (**gunakan Search untuk pencarian cepat**).
 
 ```{r}
 # `r format(Sys.time(), "%d %B %Y")` pukul `r format(Sys.time(), "%X")`
 # format waktu
+# sampai dengan `r format(Sys.time(), "%d %B %Y")` pukul `r format(Sys.time(), "%X")` 
 data <- db %>%
   filter(registrasi == "registrasi") %>%
   select(no_pend, nama, jk, prodi)
