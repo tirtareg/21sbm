@@ -382,11 +382,11 @@ data$pers_sudah <- round(data$sudah / data$lulus * 100, 0)
 data$pers_belum <- round(data$belum / data$lulus * 100, 0)
 data$pers_lulus <- round(data$lulus / data$pendaftar * 100, 0)
 data <- data[,c(1:3, 9, 4, 5, 7, 8, 6)]
-names(data) <- c("Fakultas", "Peminat", "Lulus", "% Lulus","Sudah", "Belum", "Sudah (%)", "Belum (%)", "Diterima")
+names(data) <- c("Fakultas", "Peminat", "Lulus", "% Lulus","Sudah", "Tidak", "Sudah (%)", "Tidak (%)", "Diterima")
 kable(data) %>%
   kable_styling(bootstrap_options = "striped", full_width = F,
                 latex_options = "scale_down") %>%
-  add_header_above(c(" " = 4, "Registrasi" = 4, " " = 1))
+  add_header_above(c(" " = 4, "Registrasi Online" = 4, " " = 1))
 
 ```
 
@@ -411,12 +411,12 @@ data$pers_belum <- round(data$belum / data$lulus * 100, 0)
 data$pers_lulus <- round(data$lulus / data$pendaftar * 100, 0)
 
 data <- data[,c(1:3, 9, 4, 5, 7, 8, 6)]
-names(data) <- c("Fakultas/Program Studi", "Peminat", "Lulus", "% Lulus", "Sudah", "Belum", "Sudah (%)", "Belum (%)", "Diterima")
+names(data) <- c("Fakultas/Program Studi", "Peminat", "Lulus", "% Lulus", "Sudah", "Tidak", "Sudah (%)", "Tidak (%)", "Diterima")
 
 kable(data, row.names = F) %>%
   kable_styling(bootstrap_options = "striped", full_width = F,
                 latex_options = "scale_down") %>%
-  add_header_above(c(" " = 4, "Registrasi" = 4, " " = 1)) %>%
+  add_header_above(c(" " = 4, "Registrasi Online" = 4, " " = 1)) %>%
   pack_rows("Hukum", 1, 1, label_row_css = "background-color: #666; color: #fff;") %>%
   pack_rows("Keguruan dan Ilmu Pendidikan", 2, 19, label_row_css = "background-color: #666; color: #fff;") %>%
   pack_rows("Teknik", 20, 26, label_row_css = "background-color: #666; color: #fff;") %>%
