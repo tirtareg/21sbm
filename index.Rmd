@@ -457,7 +457,7 @@ Mahasiswa Baru
 row
 ---
 
-### Berikut adalah daftar nama mahasiswa baru Universitas Sultan Ageng Tirtayasa jalur SBMPTN sampai dengan `r format(Sys.time(), "%d %B %Y")` pukul `r format(Sys.time(), "%X")` (**gunakan Search untuk pencarian cepat**).
+### Berikut adalah daftar nama mahasiswa baru Universitas Sultan Ageng Tirtayasa jalur SBMPTN (**gunakan Search untuk pencarian cepat**).
 
 ```{r}
 # `r format(Sys.time(), "%d %B %Y")` pukul `r format(Sys.time(), "%X")`
