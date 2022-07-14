@@ -267,10 +267,12 @@ kable(data, row.names = F) %>%
 Row
 ---
 
-### **Sebaran Nilai UTBK calon mahasiswa Untirta**
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=10, fig.width=8}
+
+```{r eval=FALSE, fig.height=10, fig.width=8, message=FALSE, warning=FALSE, include=FALSE}
 raw <- read_excel("G:/My Drive/Dian/R/Siti Arita Novia/sbmptn.xlsx")
 n = nrow(raw)
+
+### **Sebaran Nilai UTBK calon mahasiswa Untirta**
 
 par(mar=c(5,15,4,2))
 
